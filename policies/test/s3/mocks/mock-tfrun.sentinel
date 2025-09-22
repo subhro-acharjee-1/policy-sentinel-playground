@@ -1,0 +1,55 @@
+id = "run-PefnHkPftekx31Ss"
+created_at = "2025-09-19T06:46:14.890Z"
+created_by = "subhro_acharjee-2ceff758"
+message = "Triggered via CLI"
+commit_sha = undefined
+speculative = true
+is_destroy = false
+refresh = true
+refresh_only = false
+replace_addrs = null
+target_addrs = null
+project = {
+	"id":   "prj-o8eR1NXuUHjDaEsx",
+	"name": "Default Project",
+}
+
+variables = {
+	"AWS_ACCESS_KEY_ID": {
+		"category":  "env",
+		"sensitive": true,
+	},
+	"AWS_SECRET_ACCESS_KEY": {
+		"category":  "env",
+		"sensitive": true,
+	},
+	"AWS_SESSION_TOKEN": {
+		"category":  "env",
+		"sensitive": true,
+	},
+}
+
+organization = {
+	"name": "subhro-personal-org",
+}
+
+workspace = {
+	"auto_apply":     false,
+	"created_at":     "2025-09-19T05:46:00.708Z",
+	"description":    null,
+	"execution_mode": "default",
+	"id":             "ws-VVjgvLZhmkSgXi6N",
+	"name":           "policy-sentinel-playground",
+	"tag_bindings": [
+		{
+			"inherited": false,
+			"key":       "playgroud",
+			"value":     "true",
+		},
+	],
+	"tags": [
+		"playgroud",
+	],
+	"vcs_repo":          null,
+	"working_directory": "",
+}

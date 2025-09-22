@@ -1,0 +1,31 @@
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "collection/maps" as maps
+
+# functions
+
+get_violation = func(resource, valid_names) {
+    return  maps.get(resource[0], "values.bucket", "")  in valid_names
+}
+
+# variables
+
+resource = tf.plan(tfplan.planned_values.resources).type("aws_s3_bucket").resources
+
+valid_names = [
+    "tf-test-bucket-1",
+]
+
+violations = get_violation(resource, valid_names)
+
+
+# Outputs
+
+print(violations)
+
+# Rules
+
+main = rule {
+	violations
+}

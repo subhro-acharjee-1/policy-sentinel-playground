@@ -1,0 +1,5 @@
+.sentinel
+.terraform
+.DS_Store
+plan.json
+.terraform.lock.hcl
