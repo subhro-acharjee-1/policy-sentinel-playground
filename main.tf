@@ -1,13 +1,13 @@
-# terraform {
-#   cloud {
+terraform {
+  cloud {
 
-#     organization = "subhro-personal-org"
+    organization = "subhro-personal-org"
 
-#     workspaces {
-#       name = "policy-sentinel-playground"
-#     }
-#   }
-# }
+    workspaces {
+      name = "policy-sentinel-playground"
+    }
+  }
+}
 
 provider "aws" {
   region  = "eu-north-1"
