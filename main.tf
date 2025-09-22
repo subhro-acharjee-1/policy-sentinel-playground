@@ -16,4 +16,3 @@ provider "aws" {
 resource "aws_s3_bucket" "tf-test-bucket-1" {
   bucket = "tf-test-bucket-1"
 }
-

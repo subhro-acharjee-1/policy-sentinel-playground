@@ -1,15 +1,15 @@
-sentinel {
-  features = {
-    apply-all = true
-    terraform = true
-  }
-}
-
-# import "plugin" "tfplan/v2" {
-#   config = {
-#     "plan_path": "./plan.json"
+# sentinel {
+#   features = {
+#     apply-all = true
+#     terraform = true
 #   }
 # }
+
+import "plugin" "tfplan/v2" {
+  config = {
+    "plan_path": "./plan.json"
+  }
+}
 
 import "module" "report" {
   source = "./modules/report/report.sentinel"
