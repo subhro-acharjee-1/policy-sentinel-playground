@@ -5,11 +5,11 @@
 #   }
 # }
 
-import "plugin" "tfplan/v2" {
-  config = {
-    "plan_path": "./plan.json"
-  }
-}
+# import "plugin" "tfplan/v2" {
+#   config = {
+#     "plan_path": "./plan.json"
+#   }
+# }
 
 import "module" "report" {
   source = "./modules/report/report.sentinel"
