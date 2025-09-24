@@ -3,6 +3,7 @@ import "tfplan/v2" as tfplan
 import "tfresources" as tf
 import "collection/maps" as maps
 import "collection" as collections
+import "report" as report
 
 const = {
     "policy_name": "s3_bucket_naming_convention",
@@ -16,7 +17,9 @@ const = {
 
 get_violation = func(resources) {
     return  collections.reject(resources, func(r) {
-        return collections.contains(const.valid_names, map.get(r, const.bucket_name, ""))
+        return collections.find(const.valid_names, func (vn) {
+            return vn == maps.get(r, const.bucket_name, "")
+        }) is defined
     })
 }
 
@@ -24,7 +27,7 @@ get_violation = func(resources) {
 
 resource = tf.plan(tfplan.planned_values.resources).type(const.s3_bucket).resources
 
-violations = get_violation(resource, valid_names)
+violations = get_violation(resource)
 
 
 summary = {
