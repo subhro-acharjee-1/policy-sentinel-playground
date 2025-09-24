@@ -2,30 +2,48 @@
 import "tfplan/v2" as tfplan
 import "tfresources" as tf
 import "collection/maps" as maps
+import "collection" as collections
+
+const = {
+    "policy_name": "s3_bucket_naming_convention",
+    "message": "Ensure S3 bucket names follow the naming convention",
+   "s3_bucket": "aws_s3_bucket",
+   "valid_names": ["tf-test-bucket-1"],
+   "bucket_name": "values.bucket",
+}
 
 # functions
 
-get_violation = func(resource, valid_names) {
-    return  maps.get(resource[0], "values.bucket", "")  in valid_names
+get_violation = func(resources) {
+    return  collections.reject(resources, func(r) {
+        return collections.contains(const.valid_names, map.get(r, const.bucket_name, ""))
+    })
 }
 
 # variables
 
-resource = tf.plan(tfplan.planned_values.resources).type("aws_s3_bucket").resources
-
-valid_names = [
-    "tf-test-bucket-1",
-]
+resource = tf.plan(tfplan.planned_values.resources).type(const.s3_bucket).resources
 
 violations = get_violation(resource, valid_names)
 
 
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
 # Outputs
 
-print(violations)
+print(report.generate_policy_report(summary))
 
 # Rules
 
 main = rule {
-	violations
+	violations is empty
 }
