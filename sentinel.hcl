@@ -32,7 +32,7 @@ policy "s3-name-policy" {
     enforcement_level = "advisory"
 }
 
-policy "invalid-policy" {
-    source="./policies/invalid.sentinel"
-    enforcement_level = "advisory"
-}
+# policy "invalid-policy" {
+#     source="./policies/invalid.sentinel"
+#     enforcement_level = "advisory"
+# }
