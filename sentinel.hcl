@@ -29,7 +29,7 @@ import "module" "tfconfig-functions" {
 
 policy "s3-name-policy" {
     source="./policies/s3.sentinel"
-    enforcement_level = "advisory"
+    enforcement_level = "mandatory"
 }
 
 # policy "invalid-policy" {
